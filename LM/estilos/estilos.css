@@ -14,14 +14,14 @@ body{
     animation: aparece 2s ease-in-out;
 }
 
-/*Menú con desplegable que irá en la parte superior de cada página*/
+/*Menú que irá en la parte superior de cada página*/
 .menu{
     position:sticky;
     top:0;
     background-color: #114711;
+    z-index: 1000;/*uso z-index para evitar que las imagenes y carrusel se pongan por encima del menú*/
 }
-/*Estos estilos solo aplican a los hijos directos ul de menu. Por lo tanto, no afecta al ul dentro de submenu*/
-.menu>ul{
+.menu ul{
     display: flex;
     justify-content: space-between;
     margin: 0;
@@ -31,7 +31,6 @@ body{
 .flex2{
     white-space: nowrap;
 }
-/*Estos estilos afectan tanto a los li de menú como a los de submenú*/
 .menu ul li{
     list-style: none;
     margin: 0;
@@ -41,33 +40,15 @@ body{
     text-decoration: none;
     color:white;
     display:block;
-    padding: 25px 100px;
-    font-size: large;
+    padding: 25px 150px;
+    font-size: 1.3rem;
     border: 2px transparent solid;
 }
 .menu ul li a:hover{
     border: 2px white solid;
 }
-.submenu{
-    /*Para que el submenú se oculte por defecto*/
-    display:none;
-    position:absolute;
-    padding: 0;
-    margin-left: 5px;
-}
-.menu ul li:hover .submenu{
-    /*El elemento aparece cuando pongo el ratón encima de cada li*/
-    display: block;
-    background-color: #114711;
-}
-.relativo{
-    /*Para que el absolute se posicione*/
-    position:relative;
-}
-.submenu a{
-    /*Obligo a no hacer salto de línea*/
-    white-space: nowrap;
-}
+
+/*Estilos de index*/
 .fondoPrincipal img{
     width: 100%;
     height: 60vh;
@@ -78,13 +59,13 @@ body{
     height: 60vh;
     background-color: #00000076;
     position: absolute;
-    top: 0;
+    top: 80px;
 }
 .bienvenida h1{
     position: absolute;
     left: 2%;
     color:#FFF;
-    top: 40%;
+    top: 55%;
     font-size: 3rem;
 }
 .texto-principal{
@@ -118,6 +99,7 @@ h3{
     position: absolute;
     animation: slide 12s infinite reverse ease-in-out;
 }
+/*Carrusel de index*/
 @keyframes slide{
     0% { transform: translateX(0); }
     25% { transform: translateX(0); }
