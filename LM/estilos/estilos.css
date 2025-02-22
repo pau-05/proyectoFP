@@ -1,4 +1,4 @@
-/*Esta animación inicial es para cuando cargue la página aparezca*/
+/*Esta animación inicial es para cuando carguen las página les de un efecto de aparición*/
 @keyframes aparece {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -17,7 +17,7 @@ body{
 /*Menú que irá en la parte superior de cada página*/
 .menu{
     position:sticky;
-    top:0;
+    top: 0;
     background-color: #114711;
     z-index: 1000;/*uso z-index para evitar que las imagenes y carrusel se pongan por encima del menú*/
 }
@@ -25,7 +25,7 @@ body{
     display: flex;
     justify-content: space-between;
     margin: 0;
-    padding:0;
+    padding: 0;
 }
 /*Evita que los textos largos se ponga en dos líneas*/
 .flex2{
@@ -84,6 +84,19 @@ body{
 h3{
     text-align: center;
 }
+button{
+    padding: 10px;
+}
+/*Estilos diferentes para el botón ya que se desaparece el texto del link  (el resto se ponen blancos con el cursor encima)*/
+button a{
+    text-decoration: none;
+    color: black
+}
+button a:hover{
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
 .carousel{
     width: 500px;
     height: 300px;
@@ -137,11 +150,10 @@ h3{
     text-decoration: none;
     color: black;
 }
-/*Estilos del footer*/
+/*Estilos del footer que apicarán a todas las páginas*/
 footer{
     background-color: #114711;
     border: 4%;
-    margin-top: 15%;
 
     padding: 3%;
     color: white;
@@ -165,7 +177,7 @@ a:hover{/*estilos para cuando se ponga el cursor encima de los links*/
     width: 80%;
     height: auto;
     position: relative;
-    margin: 0 6% 0; /*Lo centra horizontalmente*/
+    margin: 0 10% 0; /*Lo centra horizontalmente*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,7 +239,7 @@ a:hover{/*estilos para cuando se ponga el cursor encima de los links*/
     cursor: pointer;
 } 
 
-/*Estilos de las págias de los eventos*/
+/*Estilos de las páginas de los eventos*/
 .evento{
     padding: 0;
     display: flex;
@@ -235,7 +247,7 @@ a:hover{/*estilos para cuando se ponga el cursor encima de los links*/
     align-items: center;
 }
 .evento-contenido{
-    padding: 40px;
+    padding: 80px;
     text-align: justify;
     width: 40%;
     height: auto;
@@ -245,4 +257,13 @@ a:hover{/*estilos para cuando se ponga el cursor encima de los links*/
     width: 90%;
     height: auto;
     
+}
+
+/*Estilos de la página de registro*/
+.container-datos input{
+    width: 30%;
+    padding: 2px;
+    margin: 60px auto; /*Espacio entre los campos*/
+    display: block; /*Hace que los inputs se pongan uno debajo del otro*/
+    align-items: center;
 }

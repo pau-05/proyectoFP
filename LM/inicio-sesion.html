@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio de sesión</title>
+        <link rel="icon" href="imagenes/tierra.png" type="image/x-icon">
+        <link rel="stylesheet" href="estilos/estilos.css">
+    </head>
+
+    <body>
+        <nav class="menu">
+            <ul>
+                <li class="flex2">
+                    <a  href="index.html">Página principal</a>
+                </li>   
+                <li>
+                    <a href="listado.html">Eventos</a>
+                </li>
+                <li>
+                    <a href="inicio-sesion.html">Iniciar sesión</a>
+                </li>
+            </nav>
+        <div class="container-datos">
+            <div class="fondoTitulo">
+                <img src="imagenes/hojas-fondo.jpg">
+                <div class="negro1"></div>
+                <div class="titulo">
+                    <h1>INICIAR DE SESIÓN</h1>
+                    <form action="/registro" method="post">
+                        <input type="text" name="nombre" placeholder="Nombre de usuario o correo electrónico" required>
+                        <input type="password" name="password1" placeholder="Contraseña" required>
+                        <button type="submit">Inicar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-info">
+                <p>¿Preguntas? Llama a <a href="#">900-900-000</a></p>
+                <ul class="footer-links">
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Centro de ayuda</a></li>
+                    <li><a href="#">Términos de uso</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Preferencias de cookies</a></li>
+                    <li><a href="#">Información corporativa</a></li>
+                    <li><a href="#">Opciones de anuncios</a></li>
+                </ul>
+                <select name="idioma" id="idioma">
+                    <option value="es">  Español</option>
+                    <option value="es">  English</option>
+                </select>
+            </div>
+        </footer>    
+    </body>
+</html>
