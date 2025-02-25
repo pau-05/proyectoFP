@@ -106,7 +106,7 @@ button a:hover{
     justify-content: center;
     margin: auto;
 }
-.carousel img{
+.carousel a img{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -123,13 +123,13 @@ button a:hover{
     90% { transform: translateX(300%); }
     100% { transform: translateX(300%); }
 }
-.carousel img:nth-child(2){
+.carousel a:nth-child(2) img{
     animation-delay: 3s;
 }
-.carousel img:nth-child(3){
+.carousel a:nth-child(3) img{
     animation-delay: 6s;
 }
-.carousel img:nth-child(4){
+.carousel a:nth-child(4) img{
     animation-delay: 9s;
 }
 /*Con el media hago que el carusel sea responsive al tamaño de la pestaña*/
@@ -145,6 +145,7 @@ button a:hover{
     margin-left: 7.5%;
     font-size: 1.2rem;
     margin-top: 10%;
+    margin-bottom: 100px;
 }
 .resto-eventos a{
     text-decoration: none;
@@ -202,6 +203,15 @@ a:hover{/*estilos para cuando se ponga el cursor encima de los links*/
     width: 100%;
     text-align: center;
     top: 1%;
+}
+.titulo a{
+    color: white;
+    text-decoration: none;
+}
+.titulo a:hover{
+    text-decoration: underline;
+    color: white;
+    cursor: pointer;
 }
 .listado-eventos{
     position: absolute;
@@ -263,7 +273,7 @@ a:hover{/*estilos para cuando se ponga el cursor encima de los links*/
 .container-datos input{
     width: 30%;
     padding: 2px;
-    margin: 60px auto; /*Espacio entre los campos*/
+    margin: 50px auto; /*Espacio entre los campos*/
     display: block; /*Hace que los inputs se pongan uno debajo del otro*/
     align-items: center;
 }
