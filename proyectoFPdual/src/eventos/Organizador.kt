@@ -2,13 +2,16 @@ package proyectoFPdual.eventos
 
 
 class Organizador(val nombre: String, val contrasenia: String, val correo: String) {
+
+    //Lista especial que guardará los eventos que haya creado cada admin
     private val eventos = ArrayList<Evento>()
+
     companion object{
         //Lista de los admins
         private val arrayAdmins = ArrayList<Organizador>()
-        //Lista especial que guardará los eventos que haya creado cada admin
 
         init {
+            //Inicializo por lo menos 1 admin
             arrayAdmins.add(Organizador("admin", "123", "admin@gmail.com"))
         }
 

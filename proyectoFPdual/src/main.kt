@@ -22,18 +22,19 @@ fun main() {
         )
         val primerMenu = readln().toInt()
         when (primerMenu){
-            1 -> {
+            1 -> {//En este primer menú lo que hace es separar los admins de los usuarios
                 println("Escribe el nombre del usuario: ")
                 usr = readln()
                 println("Escribe la contraseña: ")
                 contra = readln()
                 println("Escribe tu correo: ")
                 correo = readln()
+                //Con estas dos variables comprueba con los métodos si es admin o usuario y lo enviará a su correspondiente menú
                 val comprobarUsr = Usuario.comprobarUsuario(usr, contra, correo)
                 val comprobarAmind = Organizador.comprobarAdmin(usr, contra, correo)
                 if (comprobarUsr) {
-                    do {
-                        println("Seleccione una la acción que desea realizar: \n" +
+                    do {//Opciones de usuario, la idea es que haga todas las operaciones que quiera y luego cierre sesión
+                        println("Seleccione la acción que desea realizar: \n" +
                                 "1. Apuntarse a evento\n" +
                                 "2. Cancelar inscripción a evento\n" +
                                 "3. Ver mis eventos\n" +
@@ -47,17 +48,21 @@ fun main() {
                                         "2. Taller\n" +
                                         "3. Actividad\n")
                                 elegirCat = readln().toInt()
-                                do {
+                                do {/*Cada vez que quiera apuntarse tendrá que ver los eventos disponibles separados por
+                                categoría*/
                                     when(elegirCat){
                                         1 -> {cat=Categoria.CONFERENCIA}
                                         2 -> {cat=Categoria.TALLER}
                                         3 -> {cat}
                                         else -> {
+                                            //Comprueba que no puedan poner ningún número fuera de las opciones disponibles
                                             println("No hay más categorías, elige una de las disponibles.")
                                         }
                                     }
+                                //Obliga a elegir 1, 2 o 3, de lo contrario no se puede avanzar
                                 }while(elegirCat !in 1..4)
                                 println("Eventos disponibles: \n")
+                                //Muestra todas las categorías y ahora sí el usuario puede inscribirse con la que prefiera
                                 Evento.mostrarEventosPorCategoria(cat)
                                 println("\nDime a que evento quieres apuntarte: ")
                                 evento = readln()
@@ -65,27 +70,30 @@ fun main() {
                                 Usuario.agregarEventoAlUsuario(usr, evento)
                             }
                             2 -> {
+                                /*Primero se le despliega una lista de los eventos que ya está apuntado y de ahí puede seleccionar
+                                * el que quiera (escribiendo el nombre del evento)*/
                                 println("Lista de eventos a los que estás apuntado:\n")
                                 Usuario.imprimirEventosPorUsuario(usr)
-                                println("Dime que evento quieres cancelar: ")
+                                println("Dime cúal de tus eventos quieres cancelar: ")
                                 val evento = readln()
                                 Evento.compobarNombreEvento(evento)
                                 Usuario.quitarInscripcion(usr, evento)
                             }
                             3 -> {
+                                /*Si el usuario desea ver la lista de eventos a los que está apuntado en cualquier momento,
+                                puede hacerlo*/
                                 println("Tus eventos a los que estás incrito:")
                                 Usuario.imprimirEventosPorUsuario(usr)
                             }
                         }
                     }while(menuUsr!=4)
-                } else if (comprobarAmind){
+                } else if (comprobarAmind){//Menú del admin:
                     println("Bienvenido admin, Seleccione una la acción que desea realizar:\n" +
                             "\n1. Crear evento\n" +
                             "2. Borrar evento\n" +
                             "3. Modificar evento\n" +
                             "4. Ver eventos disponibles.\n" +
-                            "5. Cerrar sesión.\n"
-                    )
+                            "5. Cerrar sesión.\n")
                     val menuAdmin = readln().toInt()
                     do {
                         when(menuAdmin) {
@@ -109,12 +117,13 @@ fun main() {
                                             println("No hay más categorías, elige una de las disponibles.")
                                         }
                                     }
-                                }while (elegirCat !in 1..4)//Obliga a elegir 1, 2 o 3, de lo contrario no se puede comprobar
+                                }while (elegirCat !in 1..4)
                                 val comporbarEvento = Evento.comprobarEvento(nomEvento,
                                     ubiEvento, fechaEvento, cat)
                                 if (comporbarEvento){
+                                    /*Llamo al método comprobarEvento para asegurar que el mismo evento no se cree 2 veces*/
                                     println("Evento ya existente, pruebe a crear otro evento.")
-                                }else{
+                                }else{//Si todo está correcto, lo crea
                                     Evento.crearEvento(nomEvento, ubiEvento, fechaEvento, cat)
                                 }
                             }
@@ -126,15 +135,16 @@ fun main() {
                             3 -> {
                                 println("Dime el nombre del evento a modificar: ")
                                 evento = readln()
-                                val encuentraEvento= Evento.compobarNombreEvento(evento)
-                                if (comprobarUsr){
+                                //Comprueba que el evento exista. Si es así se puede modificar
+                                val conseguir = Evento.compobarNombreEvento(evento)
+                                if (conseguir != null){
                                     println("Dime el nuevo nombre:")
                                     nomEvento = readln()
-                                    println("Dime la fecha: ")
+                                    println("Dime la nueva fecha: ")
                                     fechaEvento = readln()
-                                    println("Dime la ubicación del evento")
+                                    println("Dime la nueva ubicación del evento")
                                     ubiEvento= readln()
-                                    println("Dime la categoría a la que pertenece: ")
+                                    println("Dime la categoría a la que lo quieres cambiar: ")
                                     var elegirCat = readln().toInt()
                                     do {
                                         when(elegirCat){
@@ -148,7 +158,7 @@ fun main() {
                                     }while (elegirCat !in 1..4)
                                     Evento.modificarEvento(nomEvento, ubiEvento, fechaEvento, cat)
                                 }else{
-                                    println("El evento no existe y por tanto no lo puedes modificar. Inténtelo de nuevo más tarde.")
+                                    println("El evento no existe y por tanto no lo puedes modificar. Intente crear el evebnto")
                                 }
                             }
                         }
@@ -158,6 +168,7 @@ fun main() {
                 }
             }
             2 -> {
+                //Debido a que tomé el nombre de usuario como clave primaria, no puede haber 2 que se llamen igual
                 println("Escribe el nombre del usuario: ")
                 usr = readln()
                 println("Escribe la contraseña: ")

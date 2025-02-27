@@ -4,12 +4,13 @@ class Evento(var nombreEvento: String,var ubicacion: String,var fecha: String,
              var categoria: Categoria) {
 
     companion object{
+        //Creo 3 listas que me servirá más adelante para imprimir por categoría
         private var eventosActividad = ArrayList<Evento>()
         private var eventosConferencia = ArrayList<Evento>()
         private var eventosTalleres = ArrayList<Evento>()
 
         init {
-            //Inicializo por lo menos un evento que puedan agregar los usuarios de cada categoría
+            //Inicializo por lo menos un evento de cada categoría
             eventosActividad.add(Evento("Recolecta de basura", "Parque del sol, Puertollano",
                 "20/04/2025", Categoria.ACTIVIDAD))
             eventosConferencia.add(Evento("Conferencia sobre el cambio climático",
@@ -18,12 +19,13 @@ class Evento(var nombreEvento: String,var ubicacion: String,var fecha: String,
                 Categoria.TALLER))
         }
 
-        //Método que comprueba que la fecha cumpla con el formato dd/mm/yy
+        //Método que comprueba que la fecha cumpla con el formato dd/mm/yyyy
         fun comprobarFecha(fecha: String):Boolean{
             val regex = Regex("""\d{2}/\d{2}/\d{4}""")
             return regex.matches(fecha)
         }
 
+        //Método que crea los eventos
         fun crearEvento(nombreEvento: String, ubicacion: String, fecha: String, categoria: Categoria){
             val nuevoEvento = Evento(nombreEvento, ubicacion, fecha, categoria)
             if (comprobarFecha(fecha)) {
