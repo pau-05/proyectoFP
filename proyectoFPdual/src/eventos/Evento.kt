@@ -117,18 +117,18 @@ class Evento(var nombreEvento: String,var ubicacion: String,var fecha: String,
 
         //Método que mira de manera superficial si existe para poder apuntarse (funciona para lo usuarios)
         fun compobarNombreEvento(nombreEvento: String): Evento?{
-            for (evento in eventosActividad) {
-                if (evento.nombreEvento == nombreEvento){
+            for (evento in eventosActividad) {//Le añado el lowercase para que no den problema las mayúsculas
+                if (evento.nombreEvento.lowercase() == nombreEvento.lowercase()){
                     return evento
                 }
             }
             for (evento in eventosTalleres) {
-                if (evento.nombreEvento == nombreEvento){
+                if (evento.nombreEvento.lowercase() == nombreEvento.lowercase()){
                     return evento
                 }
             }
             for (evento in eventosConferencia) {
-                if (evento.nombreEvento == nombreEvento){
+                if (evento.nombreEvento.lowercase() == nombreEvento.lowercase()){
                     return evento
                 }
             }

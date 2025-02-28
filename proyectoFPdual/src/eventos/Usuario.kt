@@ -48,7 +48,7 @@ class Usuario (val nombre: String, val contrasenia: String, val correo: String) 
                 usuario.eventosUsr.add(evento)
                 println("\nEvento '${evento.nombreEvento}' agregado a ${usuario.nombre}.\n")
             }else{
-                println("\nEvento no encontrado. Vuelva a intentarlo más tarde\n")
+                println("\nEvento no encontrado. Vuelva a intentarlo más tarde.\n")
             }
         }
 
